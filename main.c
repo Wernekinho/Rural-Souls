@@ -4,6 +4,7 @@
 #include <locale.h>
 #include <time.h>
 #include <math.h>
+#include "rpg.h"
 
 #ifdef _WIN32
 	#include <windows.h>
@@ -13,6 +14,7 @@
 	void wait(int ms) { usleep(ms * 1000); }
 #endif
 
+/*
 #define RESET   "\x1b[0m"
 #define RED     "\x1b[31m"
 #define GREEN   "\x1b[32m"
@@ -20,8 +22,10 @@
 #define BLUE    "\x1b[34m"
 #define CYAN    "\x1b[36m"
 #define BOLD    "\x1b[1m"
+*/
 
-typedef struct{
+/*
+typedef struct Personagem_ {
 	char nome[50];
 	int vida;
 	int exp;
@@ -29,13 +33,16 @@ typedef struct{
 	int QI;
 	int sorte;
 } Personagem;
+*/
 
+/*
 void sorte(Personagem *p){
 	srand(time(NULL));
 	int dado = (rand() % 6) + 1;
 	printf("Sua sorte agora é de: %d", dado);
 	p->sorte = dado;
 }
+*/
 
 void animacao(){
 	char titulo[]= "AS AVENTURAS DE LUIZIN EM: P.E, A MATERIA DESTRUIDORA";
@@ -60,6 +67,7 @@ void Menu(){
 	printf(CYAN "4. Sair\n" RESET);
 }
 
+/*
 void criarPersonagem(Personagem *p){
 	printf("\nQual seu nome?\n");
 	scanf(" %[^\n]", p->nome);
@@ -77,6 +85,7 @@ void criarPersonagem(Personagem *p){
 	printf("Item inicial: %s\n", p->itens[0]);
 	sorte(p);
 }
+*/
 
 void saves(Personagem *p){
 	FILE *f = fopen("jogo.sav", "wb");
