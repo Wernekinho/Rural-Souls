@@ -74,7 +74,7 @@ void criarPersonagem(Personagem *p){
 	printf(GREEN "\nPersonagem '%s' criado. Bem vindo(a)!\n" RESET, p->nome);
 	printf("Vida: %d | Experiencia: %d\n", p->vida, p->exp);
 	printf("Item inicial: %s\n", p->itens[0]);
-	sorte(&p);
+	sorte(p);
 }
 
 void saves(Personagem *p){
