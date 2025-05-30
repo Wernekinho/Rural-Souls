@@ -14,38 +14,8 @@
 	void wait(int ms) { usleep(ms * 1000); }
 #endif
 
-/*
-#define RESET   "\x1b[0m"
-#define RED     "\x1b[31m"
-#define GREEN   "\x1b[32m"
-#define YELLOW  "\x1b[33m"
-#define BLUE    "\x1b[34m"
-#define CYAN    "\x1b[36m"
-#define BOLD    "\x1b[1m"
-*/
-
-/*
-typedef struct Personagem_ {
-	char nome[50];
-	int vida;
-	int exp;
-	char itens[5][30];
-	int QI;
-	int sorte;
-} Personagem;
-*/
-
-/*
-void sorte(Personagem *p){
-	srand(time(NULL));
-	int dado = (rand() % 6) + 1;
-	printf("Sua sorte agora é de: %d", dado);
-	p->sorte = dado;
-}
-*/
-
 void animacao(){
-	char titulo[]= "AS AVENTURAS DE LUIZIN EM: P.E, A MATERIA DESTRUIDORA";
+	char titulo[]= "RURAL SOULS";
 	int comprimento = strlen(titulo);
 	printf("\n" YELLOW BOLD "%s\n" RESET, titulo);
 	fflush(stdout);
@@ -66,26 +36,6 @@ void Menu(){
 	printf(CYAN "3. Creditos\n" RESET);
 	printf(CYAN "4. Sair\n" RESET);
 }
-
-/*
-void criarPersonagem(Personagem *p){
-	printf("\nQual seu nome?\n");
-	scanf(" %[^\n]", p->nome);
-	
-	p->vida = 100;
-	p->exp = 0;
-	strcpy(p->itens[0], "Caneta Bic azul");
-	
-	for (int i = 1; i < 5; i++){
-		strcpy(p->itens[i], "");
-	}
-	
-	printf(GREEN "\nPersonagem '%s' criado. Bem vindo(a)!\n" RESET, p->nome);
-	printf("Vida: %d | Experiencia: %d\n", p->vida, p->exp);
-	printf("Item inicial: %s\n", p->itens[0]);
-	sorte(p);
-}
-*/
 
 void saves(Personagem *p){
 	FILE *f = fopen("jogo.sav", "wb");
@@ -314,6 +264,7 @@ void loopJogo(Personagem *p) {
         }
     }
 }
+
 int main(){
 	setlocale(LC_ALL, "Portuguese");
 	int opcao;
@@ -326,7 +277,7 @@ int main(){
 	do{
 		Menu();
 		scanf("%d", &opcao);
-		
+
 		switch (opcao) {
 			case 1:
 				criarPersonagem(&aluno);
