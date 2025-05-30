@@ -18,6 +18,7 @@ typedef struct Personagem_ {
 	int sorte;
 } Personagem;
 
+void printascii(const char *filename);
 void sorte(Personagem *p);
 void criarPersonagem(Personagem *p);
 

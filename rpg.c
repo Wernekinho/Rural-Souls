@@ -6,6 +6,17 @@
 #include <math.h>
 #include "rpg.h"
 
+void printascii(const char *filename) {
+    FILE *input;
+    char ch;
+    input = fopen(filename, "rt");
+    while(!feof(input)) {
+        fscanf(input,"%c", &ch);
+        printf("%c", ch);
+    }
+    fclose(input);
+}
+
 void sorte(Personagem *p){
 	srand(time(NULL));
 	int dado = (rand() % 6) + 1;
