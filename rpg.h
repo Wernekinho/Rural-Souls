@@ -26,5 +26,6 @@ typedef struct Personagem_ {
 void printascii(const char *filename);
 void sorte(Personagem *p);
 void criarPersonagem(Personagem *p);
+void interagirComPosner(Personagem *p);
 
 #endif
