@@ -37,6 +37,15 @@ void Menu(){
 	printf(CYAN "4. Sair\n" RESET);
 }
 
+void pausa() {
+	printf("\nPressione ENTER para continuar...\n");
+	getchar();
+}
+
+int rolarDado() {
+	return rand() % 6 + 1;
+}
+
 void saves(Personagem *p){
 	FILE *f = fopen("jogo.sav", "wb");
 	if (f == NULL){
@@ -123,6 +132,36 @@ int minigame1() {
         printf(RED "Errado! A resposta era %d. Nenhuma experiência ganha.\n" RESET, resposta);
         return 0;
     }
+}
+
+void batalha(Personagem *p, Marcel m, const char* nome_monstro) {
+	printf("\n--- Batalha contra %s ---\n", nome_monstro);
+	while (p->vida > 0 && m.vida > 0) {
+		int dado = rolarDado();
+		int ataque = p->QI + dado;
+		printf("Você rolou %d. Ataque total: %d\n", dado, ataque);
+		if (ataque > m.QI) {
+			printf("Você acertou! %s perdeu 2 de vida.\n", nome_monstro);
+			m.vida -= 2;
+		} else if (ataque < m.QI) {
+			printf("Você errou! Você perdeu 2 de vida.\n");
+			p->vida -= 2;
+		} else {
+			printf("Empate! Ambos perderam 1 de vida.\n");
+			p->vida -= 1;
+			m.vida -= 1;
+		}
+		printf("Sua vida: %d | Vida do %s: %d\n", p->vida, nome_monstro, m.vida);
+		pausa();
+	}
+
+	if (p->vida <= 0) {
+		printf("\nVocê foi derrotado. GAME OVER.\n");
+		exit(0);
+	} else {
+		printf("\nVocê derrotou %s!\n", nome_monstro);
+		p->exp += 1;
+	}
 }
 
 void historia1(Personagem *p){

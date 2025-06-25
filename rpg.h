@@ -9,6 +9,11 @@
 #define CYAN    "\x1b[36m"
 #define BOLD    "\x1b[1m"
 
+typedef struct Marcel_ {
+    int QI;
+    int vida;
+} Marcel;
+
 typedef struct Personagem_ {
 	char nome[50];
 	int vida;
