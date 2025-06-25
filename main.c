@@ -164,6 +164,40 @@ void batalha(Personagem *p, Marcel m, const char* nome_monstro) {
 	}
 }
 
+void atividades(Personagem *p, int *cont) {
+	if (*cont >= 2) {
+		printf("\nVocê já realizou todas as suas atividades.\n");
+		return;
+	}
+
+	printf("\nEscolha uma atividade:\n");
+	printf("1 - Ir para a biblioteca\n");
+	printf("2 - Ir ao refeitório\n");
+	printf("3 - Passear\n");
+	int escolha;
+	scanf("%d", &escolha);
+	getchar();
+
+	switch(escolha){
+		case 1:
+			printf("Você resolveu uma equação e ganhou +1 QI!\n");
+			p->QI += 1;
+			break;
+		case 2:
+			printf("Você ganhou um ticket e recuperou 1 ponto de vida!\n");
+			p->vida += 1;
+			break;
+		case 3:
+			printf("Você pegou na pata de um coelho e ganhou +1 sorte!\n");
+			p->sorte += 1;
+			break;
+		default:
+			printf("Opção inválida.\n");
+			return;
+	}
+	(*cont)++;
+}
+
 void historia1(Personagem *p){
 	int escolha;
 	int caminho[4] = {0, 0, 0, 0};
@@ -307,7 +341,7 @@ void loopJogo(Personagem *p) {
 int main(){
 	setlocale(LC_ALL, "Portuguese");
 	int opcao;
-	Personagem aluno;
+	Personagem aluno = {10, 5, 3, 7, 0};
 	int jogoCriado = 0;
 	srand(time(NULL));
 	

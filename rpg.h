@@ -14,6 +14,16 @@ typedef struct Marcel_ {
     int vida;
 } Marcel;
 
+typedef struct Vania_ {
+    int QI;
+    int vida;
+} Vania;
+
+typedef struct Posner_ {
+    int QI;
+    int vida;
+} Posner;
+
 typedef struct Personagem_ {
 	char nome[50];
 	int vida;
