@@ -198,7 +198,7 @@ void atividades(Personagem *p, int *cont) {
 	(*cont)++;
 }
 
-void historia1(Personagem *p){
+void capitulo1(Personagem *p){
 	int escolha;
 	int caminho[4] = {0, 0, 0, 0};
 	printf("\n* DESPERTADOR TOCA *\n 'ah... como eu queria dormir mais... não faz sentido o fim de semana acabar tão rápido assim... enfim, vamos lá, né...'\n");
@@ -319,13 +319,13 @@ int main(){
 			case 1:
 				criarPersonagem(&aluno);
 				jogoCriado = 1;
-				historia1(&aluno);
+				capitulo1(&aluno);
 				loopJogo(&aluno);
 				break;
 			case 2:
 				carregarGame(&aluno);
 				jogoCriado = 1;
-				historia1(&aluno);
+				capitulo1(&aluno);
 				loopJogo(&aluno);
 				break;
 			case 3:
