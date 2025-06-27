@@ -207,105 +207,69 @@ void historia1(Personagem *p){
 	wait(1000);
 	printf("'finalmente! cheguei nessa minha linda faculdade. Bem, mais um dia de luta começando...'\n");
 	wait(1000);
-	while(1) {
-		printf("\nO que devo fazer primeiro?\n");
-		wait(500);
-		if(!caminho[0]) {
-			printf("1. Ir para a biblioteca\n");
-			wait(500);
-		}
-		if(!caminho[1]) {
-			printf("2. Passar no refeitório para ver qual é o almoço de hoje.\n");
-			wait(500);
-		}
-		if(!caminho[2]) {
-			printf("3. Ir para o banheiro.\n");
-			wait(500);
-		}
-		if(p->exp >= 30 && !caminho[3]) {
-			printf("4. Ir para a sala de aula.\n");
-			wait(500);
-		}
-		printf("Escolha seu caminho(1-4): ");
+	printf("\nVocê chega na faculdade e vai direto para a sala 209...\n");
+	wait(1000);
+	printf("Personagem: \"Puxa, minha primeira aula é Circuitos.\"\n");
+	wait(1000);
+	printf("Quer assistir à aula? (1 - Sim, 0 - Não): ");
+	int aula;
+	scanf("%d", &aula);
+	getchar();
+	if (aula == 0) {
+		printf("Você perdeu 1 de sorte e 1 de QI por não assistir à aula.\n");
+		p->sorte -= 1;
+		p->QI -= 1;
+		printf("\nPara onde deseja ir?\n1 - Biblioteca\n2 - Refeitório\n3 - Passear pela faculdade\n");
+		int escolha;
 		scanf("%d", &escolha);
+		getchar();
 
-		if (escolha < 1 || escolha > 4) {
-			printf(RED "Escolha inválida.\n" RESET);
-			continue;
-		}
-		if(caminho[escolha - 1]) {
-			printf(RED "Você já foi por esse caminho.\n" RESET);
-			continue;
-		}
-
-		switch (escolha){
-			case 1:
-				printf("\n A prova de Circuitos Digitais está chegando... Você deve estar preparado. Você fez 21 questões sobre circuitos sequênciais.\n -- Você ganhou 20 de experiência.\n");
-				p->exp += 20;
-				caminho[0] = 1;
-				break;
-			case 2:
-				printf("\n O almoço de hoje é Estrogonofe! Você recebe 1 ticket e mais 20 de vida máxima.\n");
-				p->vida += 20;
-				p->exp += 10;
-				addItem(p, "Ticket do R.U");
-				caminho[1] = 1;
-				break;
-			case 3:
-				printf("\n Você entrou no banheiro para jogar uma água na na cara, pois estava com muito sono.\n");
-				wait(1000);
-				printf("\n Você foi pegar um papel para se enxugar, mas algo chamou sua atenção no chão. ao lado da lixeira, você se deparou com uma calculadora. Essa, a qual ajudará você a realizar cálculos triviais de forma rápida e eficiente.\n");
-				addItem(p, "Calculadora");
-				p->exp += 20; 
-				p->QI += 1;
-				caminho[2] = 1;
-				break;
-			case 4: 
-				if(p->exp >= 30) {
-					printf("\n Você chegou cedo, só há alguns alunos em sala. Vocês começam a conversar sobre como acham que será a prova de Circuitos.\n");
-					wait(500);
-					printf("\n Você se lembra de que há uma lista de Circuitos para entregar neste dia, mas você está bem na matéria.\n");
-					wait(500);
-					printf("Você então decide:\n");
-					wait(500);
-					printf("1. Entregar a lista e garantir mais uns décimos ao final dessa prova.\n");
-					printf("2. Não entregar pois, por mais que o medo da prova ser difícil esteja te acometendo, você se garante(você pelo menos acha que se garante).");
-					caminho[3] = 1;
-					if (escolha == 4 && caminho[3]) {
-						int entrega;
-						printf("\nVocê escolheu ir para a sala de aula.\n");
-						printf("Você quer entregar a lista? (1 - sim, 2 - não): ");
-						scanf("%d", &entrega);
-						if (entrega == 1) {
-							int xp = minigame1();
-							printf("Você entregou a lista e ganhou mais 20 de experiência!\n");
-							p->exp += xp;
-						} else if (entrega == 2) {
-							printf("Você decidiu não entregar a lista. Boa sorte na prova!\n");
-						} else {
-							printf(RED "Opção inválida.\n" RESET);
-						}
-					}
-				} else {
-					printf(RED "Você precisa de pelo menos 30 de experiência para ir para a sala de aula.\n" RESET);
-				}
-				break;
-		}
-
-		int todosCaminhos = 1;
-		for (int i = 0; i < 4; i++) {
-			if (!caminho[i]) {
-				todosCaminhos = 0;
-				break;
-			}
-		}
-		if(todosCaminhos) {
-			printf(GREEN "\nParabéns! Você completou a preparação para a prova de CD!\n" RESET);
+		if (escolha == 1) {
+			printf("Você foi à biblioteca e resolveu um exercício. +1 QI\n");
+			p->QI += 1;
+		} else if (escolha == 2) {
+			printf("Você foi ao refeitório e comeu ESTROGONOFE! +1 vida\n");
+			p->vida += 1;
+		} else if (escolha == 3) {
+			printf("Você encontrou um coelho e pegou na pata dele. +1 sorte\n");
+			p->sorte += 1;
+		} 
+	
+	}else {
+			printf("Marcel: \"Bom dia a todos. Como vocês sabem, a prova de Circuitos está chegando.\nHoje darei uma revisão sobre os conteúdos que vão cair.\n");
 			wait(1500);
-			return;
-		}
+			printf("(2 horas depois)\n");
+			wait(1500);
+			printf("Marcel: \"Bom pessoal, é isso. Espero ter tirado todas as dúvidas de vocês. Boa sorte na prova!\"\n");
+			wait(1500);
+			printf("Personagem: \"Ufa, achei que não sobreviveria a essa lista... pelo amor de Deus, e ainda não entendi como funciona um diplexador... enfim, espero que a prova não esteja difícil.\"\n");
 	}
+
+	pausa();
+	interagirComPosner(p);
+
+	int cont = 0;
+	atividadeExtra(p, &cont);
+	atividadeExtra(p, &cont);
+
+	printf("\n--- Próximo dia ---\n");
+	printf("\"* A PROVA DE CIRCUITOS CHEGOU *\"\n");
+	wait(1000);
+	wait(1000);
+
+	if (p->exp >= 7) {
+		printf("Marcel: \"Somente lápis, borracha e caneta em cima da mesa. Vamos começar a prova.\"\n");
+		Marcel prova = {6, 9};
+		batalha(p, prova, "PROVA DE CIRCUITOS");
+	} else {
+		printf("Você não tem experiência suficiente. Vá para a biblioteca treinar.\n");
+		p->exp += 2;
+		printf("Você treinou e ganhou +1 de habilidade (agora: %d).\n", p->exp);
+	}
+
+	printf("\n--- Capítulo 1 concluído ---\n");
 }
+	
 void loopJogo(Personagem *p) {
     int acao;
     while (1) {
