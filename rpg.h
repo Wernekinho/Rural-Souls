@@ -10,16 +10,19 @@
 #define BOLD    "\x1b[1m"
 
 typedef struct Marcel_ {
+    char nome[50];
     int QI;
     int vida;
 } Marcel;
 
-typedef struct Vania_ {
+typedef struct Fernanda_ {
+    char nome[50];
     int QI;
     int vida;
-} Vania;
+} Fernanda;
 
 typedef struct Posner_ {
+    char nome[50];
     int QI;
     int vida;
 } Posner;
@@ -28,9 +31,10 @@ typedef struct Personagem_ {
 	char nome[50];
 	int vida;
 	int exp;
-	char itens[5][30];
+	char itens[10][30];
 	int QI;
 	int sorte;
+    int capituloAtual;
 } Personagem;
 
 void printascii(const char *filename);
