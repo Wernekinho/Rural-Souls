@@ -279,6 +279,7 @@ void capitulo1(Personagem *p){
 		printf("Você não tem experiência suficiente. Vá para a biblioteca treinar.\n");
 		p->exp += 2;
 		printf("Você treinou e ganhou +1 de habilidade (agora: %d).\n", p->exp);
+		wait(1000);
 	}
 
 	printf("Marcel: \"Somente lápis, borracha e caneta em cima da mesa. Vamos começar a prova.\"\n");
