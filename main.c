@@ -93,7 +93,7 @@ void carregarGame(Personagem *p){
 
 void creditos(){
 	printf(BLUE "\n======= CREDITOS =======\n" RESET);
-	printf("Jogo criado pelos desenvolvedores: Cauã Wernek, Leonardo Tavares e Luiz Eduardo.\n");
+	printf("Jogo criado pelos desenvolvedores: Caua Wernek, Leonardo Tavares e Luiz Eduardo.\n");
 	printf("Inspirado em livros-jogo de RPG e no cotidiano do calouro de CCOMP.\n");
 }
 
@@ -101,11 +101,11 @@ void addItem(Personagem *p, const char *item){
 	for (int i = 0; i < 5; i++){
 		if (strlen(p->itens[i]) == 0){
 			strcpy(p->itens[i], item);
-			printf(GREEN "'%s' foi adicionado ao seu inventário.\n" RESET, item);
+			printf(GREEN "'%s' foi adicionado ao seu inventario.\n" RESET, item);
 			return;
 		}
 	}
-	printf(RED "Inventário cheio! Venda algum item para adicionar '%s'.\n" RESET, item);
+	printf(RED "Inventario cheio! Venda algum item para adicionar '%s'.\n" RESET, item);
 }
 
 void mostrarInventario(Personagem *p){
@@ -141,7 +141,7 @@ int minigame1() {
     scanf("%d", &tentativa);
 
     if (tentativa == resposta) {
-        printf(GREEN "Correto! Você ganhou 20 de experiência.\n" RESET);
+        printf(GREEN "Correto! Voce ganhou 20 de experiência.\n" RESET);
         return 20;
     } else {
         printf(RED "Errado! A resposta era %d. Nenhuma experiência ganha.\n" RESET, resposta);
@@ -155,12 +155,12 @@ void batalha(Personagem *p, Marcel m, const char* nome_monstro) {
 	while (p->vida > 0 && m.vida > 0) {
 		int dado = rolarDado();
 		int ataque = p->QI + dado;
-		printf("Você rolou %d. Ataque total: %d\n", dado, ataque);
+		printf("Voce rolou %d. Ataque total: %d\n", dado, ataque);
 		if (ataque > m.QI) {
-			printf("Você acertou! %s perdeu 2 de vida.\n", nome_monstro);
+			printf("Voce acertou! %s perdeu 2 de vida.\n", nome_monstro);
 			m.vida -= 2;
 		} else if (ataque < m.QI) {
-			printf("Você errou! Você perdeu 2 de vida.\n");
+			printf("Voce errou! Voce perdeu 2 de vida.\n");
 			p->vida -= 2;
 		} else {
 			printf("Empate! Ambos perderam 1 de vida.\n");
@@ -172,23 +172,23 @@ void batalha(Personagem *p, Marcel m, const char* nome_monstro) {
 	}
 
 	if (p->vida <= 0) {
-		printf("\nVocê foi derrotado. GAME OVER.\n");
+		printf("\nVoce foi derrotado. GAME OVER.\n");
 		exit(0);
 	} else {
-		printf("\nVocê derrotou %s!\n", nome_monstro);
+		printf("\nVoce derrotou %s!\n", nome_monstro);
 		p->exp += 1;
 	}
 }
 
 void atividades(Personagem *p, int *cont) {
 	if (*cont >= 2) {
-		printf("\nVocê já realizou todas as suas atividades.\n");
+		printf("\nVoce ja realizou todas as suas atividades.\n");
 		return;
 	}
 
 	printf("\nEscolha uma atividade:\n");
 	printf("1 - Ir para a biblioteca\n");
-	printf("2 - Ir ao refeitório\n");
+	printf("2 - Ir ao refeitorio\n");
 	printf("3 - Passear\n");
 	int escolha;
 	scanf("%d", &escolha);
@@ -196,19 +196,19 @@ void atividades(Personagem *p, int *cont) {
 
 	switch(escolha){
 		case 1:
-			printf("Você resolveu uma equação e ganhou +1 QI!\n");
+			printf("Voce resolveu uma equacao e ganhou +1 QI!\n");
 			p->QI += 1;
 			break;
 		case 2:
-			printf("Você ganhou um ticket e recuperou 1 ponto de vida!\n");
+			printf("Voce ganhou um ticket e recuperou 1 ponto de vida!\n");
 			p->vida += 1;
 			break;
 		case 3:
-			printf("Você pegou na pata de um coelho e ganhou +1 sorte!\n");
+			printf("Voce pegou na pata de um coelho e ganhou +1 sorte!\n");
 			p->sorte += 1;
 			break;
 		default:
-			printf("Opção inválida.\n");
+			printf("Opcao invalida.\n");
 			return;
 	}
 	(*cont)++;
@@ -217,48 +217,48 @@ void atividades(Personagem *p, int *cont) {
 void capitulo1(Personagem *p){
 	int escolha;
 	int caminho[4] = {0, 0, 0, 0};
-	printf("\n* DESPERTADOR TOCA *\n 'ah... como eu queria dormir mais... não faz sentido o fim de semana acabar tão rápido assim... enfim, vamos lá, né...'\n");
+	printf("\n* DESPERTADOR TOCA *\n 'ah... como eu queria dormir mais... nao faz sentido o fim de semana acabar tao rapido assim... enfim, vamos la, ne...'\n");
 	wait(1000);
 	printf("\n* 1 HORA DEPOIS *\n");
 	wait(1000);
-	printf("'finalmente! cheguei nessa minha linda faculdade. Bem, mais um dia de luta começando...'\n");
+	printf("'finalmente! cheguei nessa minha linda faculdade. Bem, mais um dia de luta comecando...'\n");
 	wait(1000);
-	printf("\nVocê chega na faculdade e vai direto para a sala 209...\n");
+	printf("\nVoce chega na faculdade e vai direto para a sala 209...\n");
 	wait(1000);
-	printf("Personagem: \"Puxa, minha primeira aula é Circuitos.\"\n");
+	printf("Personagem: \"Puxa, minha primeira aula e Circuitos.\"\n");
 	wait(1000);
-	printf("Quer assistir à aula? (1 - Sim, 0 - Não): ");
+	printf("Quer assistir a aula? (1 - Sim, 0 - Nao): ");
 	int aula;
 	scanf("%d", &aula);
 	getchar();
 	if (aula == 0) {
-		printf("Você perdeu 1 de sorte e 1 de QI por não assistir à aula.\n");
+		printf("Voce perdeu 1 de sorte e 1 de QI por nao assistir a aula.\n");
 		p->sorte -= 1;
 		p->QI -= 1;
-		printf("\nPara onde deseja ir?\n1 - Biblioteca\n2 - Refeitório\n3 - Passear pela faculdade\n");
+		printf("\nPara onde deseja ir?\n1 - Biblioteca\n2 - Refeitorio\n3 - Passear pela faculdade\n");
 		int escolha;
 		scanf("%d", &escolha);
 		getchar();
 
 		if (escolha == 1) {
-			printf("Você foi à biblioteca e resolveu um exercício. +1 QI\n");
+			printf("Voce foi a biblioteca e resolveu um exercício. +1 QI\n");
 			p->QI += 1;
 		} else if (escolha == 2) {
-			printf("Você foi ao refeitório e comeu ESTROGONOFE! +1 vida\n");
+			printf("Voce foi ao refeitorio e comeu ESTROGONOFE! +1 vida\n");
 			p->vida += 1;
 		} else if (escolha == 3) {
-			printf("Você encontrou um coelho e pegou na pata dele. +1 sorte\n");
+			printf("Voce encontrou um coelho e pegou na pata dele. +1 sorte\n");
 			p->sorte += 1;
 		} 
 	
 	}else {
-			printf("Marcel: \"Bom dia a todos. Como vocês sabem, a prova de Circuitos está chegando.\nHoje darei uma revisão sobre os conteúdos que vão cair.\n");
+			printf("Marcel: \"Bom dia a todos. Como vocês sabem, a prova de Circuitos esta chegando.\nHoje darei uma revisao sobre os conteúdos que vao cair.\n");
 			wait(1500);
 			printf("(2 horas depois)\n");
 			wait(1500);
-			printf("Marcel: \"Bom pessoal, é isso. Espero ter tirado todas as dúvidas de vocês. Boa sorte na prova!\"\n");
+			printf("Marcel: \"Bom pessoal, e isso. Espero ter tirado todas as dúvidas de vocês. Boa sorte na prova!\"\n");
 			wait(1500);
-			printf("Personagem: \"Ufa, achei que não sobreviveria a essa lista... pelo amor de Deus, e ainda não entendi como funciona um diplexador... enfim, espero que a prova não esteja difícil.\"\n");
+			printf("Personagem: \"Ufa, achei que nao sobreviveria a essa lista... pelo amor de Deus, e ainda nao entendi como funciona um diplexador... enfim, espero que a prova nao esteja difícil.\"\n");
 	}
 	wait(1500);
 	limparTela();
@@ -270,18 +270,18 @@ void capitulo1(Personagem *p){
 	atividades(p, &cont);
 	atividades(p, &cont);
 
-	printf("\n--- Próximo dia ---\n");
+	printf("\n--- Proximo dia ---\n");
 	printf("\"* A PROVA DE CIRCUITOS CHEGOU *\"\n");
 	wait(1000);
 
 	while (p->exp < 7) {
-		printf("Você não tem experiência suficiente. Vá para a biblioteca treinar.\n");
+		printf("Voce nao tem experiência suficiente. Va para a biblioteca treinar.\n");
 		p->exp += 2;
-		printf("Você treinou e ganhou +1 de habilidade (agora: %d).\n", p->exp);
+		printf("Voce treinou e ganhou +1 de habilidade (agora: %d).\n", p->exp);
 		wait(1000);
 	}
 
-	printf("Marcel: \"Somente lápis, borracha e caneta em cima da mesa. Vamos começar a prova.\"\n");
+	printf("Marcel: \"Somente lapis, borracha e caneta em cima da mesa. Vamos comecar a prova.\"\n");
 	Marcel prova;
 	prova.QI = 6;
 	prova.vida = 9;
@@ -295,8 +295,8 @@ void capitulo1(Personagem *p){
 }
 
 void ProvaMD(Personagem *p) {
-	Fernanda provaMD = {"Matemática Discreta", 8, 10};
-    printf("\nVocê enfrentará a prova de %s!\n", provaMD.nome);
+	Fernanda provaMD = {"Matematica Discreta", 8, 10};
+    printf("\nVoce enfrentara a prova de %s!\n", provaMD.nome);
     printf("QI da prova: %d | Vida da prova: %d\n", provaMD.QI, provaMD.vida);
     wait(1000);
 
@@ -304,13 +304,13 @@ void ProvaMD(Personagem *p) {
         printf("\n--- Sua vez ---\n");
         int dado = (rand() % 6) + 1;
         int ataque = dado + p->QI;
-        printf("Você rolou um dado: %d + QI (%d) = %d\n", dado, p->QI, ataque);
+        printf("Voce rolou um dado: %d + QI (%d) = %d\n", dado, p->QI, ataque);
 
         if (ataque > provaMD.QI) {
-            printf(GREEN "Você acertou! A prova perde 2 de vida.\n" RESET);
+            printf(GREEN "Voce acertou! A prova perde 2 de vida.\n" RESET);
             provaMD.vida -= 2;
         } else if (ataque < provaMD.QI) {
-            printf(RED "Você errou! Você perde 2 de vida.\n" RESET);
+            printf(RED "Voce errou! Voce perde 2 de vida.\n" RESET);
             p->vida -= 2;
         } else {
             printf("Empate! Ambos perdem 1 de vida.\n");
@@ -323,58 +323,58 @@ void ProvaMD(Personagem *p) {
     }
 
     if (p->vida <= 0) {
-        printf(RED "\nVocê foi derrotado pela prova de Matemática Discreta...\n" RESET);
+        printf(RED "\nVoce foi derrotado pela prova de Matematica Discreta...\n" RESET);
         printf(RED "GAME OVER\n" RESET);
         exit(0);
     } else {
-        printf(GREEN "\nParabéns! Você passou na prova de %s!\n" RESET, provaMD.nome);
+        printf(GREEN "\nParabens! Voce passou na prova de %s!\n" RESET, provaMD.nome);
         p->exp += 30;
     }
 }
 
 void capitulo2(Personagem *p){
-	printf("\nVocê: Uou, consegui passar dessa prova... foi difícil. Bem, menos uma matéria agora.\n");
+	printf("\nVoce: Uou, consegui passar dessa prova... foi difícil. Bem, menos uma materia agora.\n");
 	wait(1000);
-	printf("Posner: Vejo que conseguiu passar pelo primeiro desafio. Daqui pra frente será mais difícil, se prepare.\n ");
+	printf("Posner: Vejo que conseguiu passar pelo primeiro desafio. Daqui pra frente sera mais difícil, se prepare.\n ");
 	wait(1000);
-	printf("Você: Oi, é você de novo? Você sempre aparece nesses momentos. Bom... até mais.\n");
+	printf("Voce: Oi, e você de novo? Voce sempre aparece nesses momentos. Bom... ate mais.\n");
 	wait(1000);
 	limparTela();
 
 	printf("\n--- 1 MÊS DEPOIS ---\n");
 	wait(1000);
-	printf("Você: Hoje começa minha jornada pela Matemática Discreta.\n");
+	printf("Voce: Hoje comeca minha jornada pela Matematica Discreta.\n");
 	wait(1000);
-	printf("Você: Todos estão falando pra mim que é bem mais difícil que Circuitos...\n");
+	printf("Voce: Todos estao falando pra mim que e bem mais difícil que Circuitos...\n");
 	wait(500);
-	printf("Você: Somente 10 pessoas passam... É o que vamos ver.\n");
+	printf("Voce: Somente 10 pessoas passam... E o que vamos ver.\n");
 	wait(1500);
 	limparTela();
 
-	printf("\nProfessora: Boa tarde chuchus! Meu nome é Fernanda e irei lecionar Matemática Discreta a vocês nesse período.\n");
+	printf("\nProfessora: Boa tarde chuchus! Meu nome e Fernanda e irei lecionar Matematica Discreta a vocês nesse período.\n");
 	wait(2000);
 	printf("\nAo final da aula...\n");
-	printf("Você: Cara, essa aula foi demais! Porém, preciso estudar cada vez mais.\n");
+	printf("Voce: Cara, essa aula foi demais! Porem, preciso estudar cada vez mais.\n");
 	wait(1000);
 	limparTela();
 
 	int acao;
-	printf("\nFernanda: Oi chuchu. Você poderia encher minha garrafa enquanto eu guardo as coisas aqui, por favor?\n1. Sim\n2. Não\nEscolha: ");
+	printf("\nFernanda: Oi chuchu. Voce poderia encher minha garrafa enquanto eu guardo as coisas aqui, por favor?\n1. Sim\n2. Nao\nEscolha: ");
 	scanf("%d", &acao);
 	if (acao == 1){
-		printf("Você: Claro, professora!\n");
+		printf("Voce: Claro, professora!\n");
 		wait(300);
-		printf("Você encheu a garrafa dela. Ganhou 2 de QI e 2 de vida máxima. Além disso, Fernanda te deu um presente. Creatina!\n");
+		printf("Voce encheu a garrafa dela. Ganhou 2 de QI e 2 de vida maxima. Alem disso, Fernanda te deu um presente. Creatina!\n");
 		p->QI += 2;
 		p->vida += 2;
 		addItem(p, "Creatina");
 	} else {
-		printf("Você recusou. Fernanda te olhou com julgamento... Nenhum ganho.\n");
+		printf("Voce recusou. Fernanda te olhou com julgamento... Nenhum ganho.\n");
 	}
 
 	wait(1000);
-	printf("\nPosner: E então, como está indo MD?\n");
-	printf("Você: Estou fazendo o meu maximo.\n");
+	printf("\nPosner: E entao, como esta indo MD?\n");
+	printf("Voce: Estou fazendo o meu maximo.\n");
 	printf("Posner: Irei te dar um presente: uma lista de exercícios de MD.\n");
 	limparTela();
 
@@ -382,7 +382,7 @@ void capitulo2(Personagem *p){
 	int resposta;
 	scanf("%d", &resposta);
 	if (resposta == 69) {
-		printf(GREEN "Você fez a lista de exercícios e ganhou +1 de QI e +1 de sorte!\n" RESET);
+		printf(GREEN "Voce fez a lista de exercícios e ganhou +1 de QI e +1 de sorte!\n" RESET);
 		p->QI += 1;
 		p->sorte += 1;
 	} else {
@@ -392,10 +392,10 @@ void capitulo2(Personagem *p){
 	wait(1000);
 	printf("\n---- NA SEMANA SEGUINTE ----\n");
 	wait(1000);
-	printf("\nVocê: Hoje é o dia da prova. Não sei se estou pronto...\n");
+	printf("\nVoce: Hoje e o dia da prova. Nao sei se estou pronto...\n");
 	if (p->QI < 6) {
-        printf(RED "Seu QI é insuficiente. Vá estudar mais na biblioteca.\n" RESET);
-        printf("Você estudou bastante e ganhou +2 de QI.\n");
+        printf(RED "Seu QI e insuficiente. Va estudar mais na biblioteca.\n" RESET);
+        printf("Voce estudou bastante e ganhou +2 de QI.\n");
         p->QI += 2;
     }
 
@@ -404,17 +404,17 @@ void capitulo2(Personagem *p){
     
 	ProvaMD(p);
 
-    printf(GREEN "\nVocê passou na prova de Matemática Discreta!\n" RESET); 
+    printf(GREEN "\nVoce passou na prova de Matematica Discreta!\n" RESET); 
 
     wait(1500);
-    printf("\nPosner: Geralmente essas são as provas mais difíceis do período.\n");
-    printf("Você: Você de novo? Está me perseguindo?\n");
+    printf("\nPosner: Geralmente essas sao as provas mais difíceis do período.\n");
+    printf("Voce: Voce de novo? Esta me perseguindo?\n");
     wait(1000);
-    printf("Você: De qualquer forma, falta uma matéria apenas para eu me formar.\n");
-    printf("Posner: Bom, essa é a mais difícil... até semestre que vem, aluno.\n");
+    printf("Voce: De qualquer forma, falta uma materia apenas para eu me formar.\n");
+    printf("Posner: Bom, essa e a mais difícil... ate semestre que vem, aluno.\n");
 
     wait(1500);
-    printf("Você: Espera... ALUNO? ME CHAMOU DE ALUNO?\n");
+    printf("Voce: Espera... ALUNO? ME CHAMOU DE ALUNO?\n");
     wait(1000);
 
     printf(GREEN "\nFIM DO CAPÍTULO 2.\n" RESET);
@@ -427,7 +427,7 @@ void capitulo2(Personagem *p){
 void ProvaPE(Personagem *p) {
     Posner provaPE = {"Prova de PE", 12, 16};
 
-    printf("\nVocê enfrentará a %s!\n", provaPE.nome);
+    printf("\nVoce enfrentara a %s!\n", provaPE.nome);
     printf("QI da prova: %d | Vida da prova: %d\n", provaPE.QI, provaPE.vida);
     wait(1000);
 
@@ -435,13 +435,13 @@ void ProvaPE(Personagem *p) {
         printf("\n--- Sua vez ---\n");
         int dado = (rand() % 6) + 1;
         int ataque = dado + p->QI;
-        printf("Você rolou: %d + QI (%d) = %d\n", dado, p->QI, ataque);
+        printf("Voce rolou: %d + QI (%d) = %d\n", dado, p->QI, ataque);
 
         if (ataque > provaPE.QI) {
-            printf(GREEN "Você acertou! A prova perde 2 de vida.\n" RESET);
+            printf(GREEN "Voce acertou! A prova perde 2 de vida.\n" RESET);
             provaPE.vida -= 2;
         } else if (ataque < provaPE.QI) {
-            printf(RED "Você errou! Você perde 2 de vida.\n" RESET);
+            printf(RED "Voce errou! Voce perde 2 de vida.\n" RESET);
             p->vida -= 2;
         } else {
             printf(YELLOW "Empate! Ambos perdem 1 de vida.\n" RESET);
@@ -454,10 +454,10 @@ void ProvaPE(Personagem *p) {
     }
 
 	if (p->vida <= 0) {
-        printf(RED "\nVocê foi derrotado pela Prova de PE...\nGAME OVER.\n" RESET);
+        printf(RED "\nVoce foi derrotado pela Prova de PE...\nGAME OVER.\n" RESET);
         exit(0);
     } else {
-        printf(GREEN "\nVocê venceu a %s!\n" RESET, provaPE.nome);
+        printf(GREEN "\nVoce venceu a %s!\n" RESET, provaPE.nome);
         p->exp += 40;
     }
 }
@@ -465,72 +465,72 @@ void ProvaPE(Personagem *p) {
 void capitulo3(Personagem *p) {
 	printf("\n1 mês depois...\n");
     wait(1000);
-    printf("Você: Aquele cara me chamou de aluno, mas ele também não era aluno?\n");
+    printf("Voce: Aquele cara me chamou de aluno, mas ele tambem nao era aluno?\n");
     wait(1500);
 
     printf("\n* Chegando na sala *\n");
     wait(1000);
-    printf("Posner: Bom dia, sou o professor Posner. Aqueles que não se consideram dignos, por favor, saiam.\n");
+    printf("Posner: Bom dia, sou o professor Posner. Aqueles que nao se consideram dignos, por favor, saiam.\n");
     wait(2000);
-    printf("Posner: Já aviso de antemão que ninguém nunca passou em minha disciplina. Boa sorte.\n");
+    printf("Posner: Ja aviso de antemao que ninguem nunca passou em minha disciplina. Boa sorte.\n");
     wait(2000);
 
     printf("\n* Ao fim da primeira aula *\n");
     wait(1000);
-    printf("Você: Esse cara não tá pra brincadeira. Tenho que estudar o dobro... não, o triplo pra passar.\n");
+    printf("Voce: Esse cara nao ta pra brincadeira. Tenho que estudar o dobro... nao, o triplo pra passar.\n");
     wait(1500);
 
     printf("\n* Nos dias seguintes, andando pelos corredores... *\n");
     wait(1500);
     printf("Desconhecido: Ei, psiu!\n");
     wait(1000);
-    printf("Você: Ahn? Eu?\n");
+    printf("Voce: Ahn? Eu?\n");
     wait(1000);
-    printf("Desconhecido: É você mesmo. Venha cá.\n");
+    printf("Desconhecido: E você mesmo. Venha ca.\n");
     wait(1000);
     printf("Desconhecido: Prazer, sou Bruno, o único aluno a superar as 3 disciplinas.\n");
     wait(2000);
-    printf("Você: Mas o Posner disse...\n");
+    printf("Voce: Mas o Posner disse...\n");
     wait(1000);
-    printf("Bruno: ELE MENTE! Você é a única esperança para destruir essa matéria. Quanto mais ele reprova, mais ele se fortalece.\n");
+    printf("Bruno: ELE MENTE! Voce e a única esperanca para destruir essa materia. Quanto mais ele reprova, mais ele se fortalece.\n");
     wait(2500);
-    printf("Bruno: Irei te dar uma dica. Na biblioteca, na área de História, existe um livro escondido de PROGRAMAÇÃO EM C.\n");
+    printf("Bruno: Irei te dar uma dica. Na biblioteca, na area de Historia, existe um livro escondido de PROGRAMAÇÃO EM C.\n");
     wait(2500);
-    printf("Bruno: Caso consiga pegá-lo, você passará. É tudo que posso dizer. Até.\n");
+    printf("Bruno: Caso consiga pega-lo, você passara. E tudo que posso dizer. Ate.\n");
     wait(2000);
-    printf("* E, mais rápido que um raio, Bruno some *\n");
+    printf("* E, mais rapido que um raio, Bruno some *\n");
 
     int acreditar;
-    printf("\nVocê acredita em Bruno? (1 - Sim, 0 - Não): ");
+    printf("\nVoce acredita em Bruno? (1 - Sim, 0 - Nao): ");
     scanf("%d", &acreditar);
 
     if (acreditar == 1) {
-        printf("Você encontra o livro escondido de PROGRAMAÇÃO EM C na biblioteca!\n");
+        printf("Voce encontra o livro escondido de PROGRAMAÇÃO EM C na biblioteca!\n");
         p->QI += 5;
         p->vida += 5;
-        printf(GREEN "Você ganhou +5 de QI e +5 de Vida!\n" RESET);
+        printf(GREEN "Voce ganhou +5 de QI e +5 de Vida!\n" RESET);
     } else {
-        printf("Você ignorou a dica de Bruno.\n");
+        printf("Voce ignorou a dica de Bruno.\n");
     }
 
     wait(1500);
-    printf("\n* Próxima aula *\n");
+    printf("\n* Proxima aula *\n");
     wait(1000);
     printf("Posner: Boa tarde caros alunos. Hoje falaremos de Matrizes.\n");
     wait(1500);
 
     int tirarDuvida;
-    printf("Deseja tirar uma dúvida com o Posner? (1 - Sim, 0 - Não): ");
+    printf("Deseja tirar uma dúvida com o Posner? (1 - Sim, 0 - Nao): ");
     scanf("%d", &tirarDuvida);
 
     if (tirarDuvida == 1) {
         p->QI -= 1;
         p->vida -= 1;
-        printf(RED "Você perdeu 1 ponto de QI e 1 de Vida...\n" RESET);
+        printf(RED "Voce perdeu 1 ponto de QI e 1 de Vida...\n" RESET);
     }
 
     wait(1500);
-    printf("\nVocê: Finalmente chegou o dia da prova.\n");
+    printf("\nVoce: Finalmente chegou o dia da prova.\n");
     wait(1500);
     printf("* PROVA DE PE se aproxima *\n");
 
@@ -538,26 +538,29 @@ void capitulo3(Personagem *p) {
 
     printf(GREEN "\nPosner: Bom, você conseguiu. Agora que perdi, posso deixar meu cargo para você.\n" RESET);
     wait(2000);
-    printf("Você: Espera, eu não quero!\n");
+    printf("Voce: Espera, eu nao quero!\n");
     wait(1000);
-    printf("Posner: É assim que funciona, garoto.\n");
+    printf("Posner: E assim que funciona, garoto.\n");
     wait(1500);
-    printf("Você: Mas e o Bruno? Ele passou antes de mim! Por que ele não é o atual professor?\n");
+    printf("Voce: Mas e o Bruno? Ele passou antes de mim! Por que ele nao e o atual professor?\n");
     wait(2000);
-    printf("Posner: Bruno? Não existe nenhum Bruno.\n");
+    printf("Posner: Bruno? Nao existe nenhum Bruno.\n");
     wait(2000);
 
     printf("\n* 1 ano depois... *\n");
     wait(1500);
-    printf("Você: Bom dia alunos, sou %s, e irei lecionar a matéria de PE. Vamos começar dizendo os nomes. Você, por favor, seu nome?\n", p->nome);
+    printf("Voce: Bom dia alunos, sou %s, e irei lecionar a materia de PE. Vamos comecar dizendo os nomes. Voce, por favor, seu nome?\n", p->nome);
     wait(3000);
-    printf("Aluno: Muito prazer, meu nome é Bruno.\n");
+    printf("Aluno: Muito prazer, meu nome e Bruno.\n");
     wait(2000);
     printf(GREEN "\nFIM DO CAPÍTULO 3\n" RESET);
 }
 
 int main(){
-	setlocale(LC_ALL, "Portuguese");
+	setlocale(LC_ALL, "");
+	#ifdef _WIN32
+		system("chcp 65001 > nul");
+	#endif
 	int opcao;
 	Personagem aluno = {10, 5, 3, 7, 0};
 	int jogoCriado = 0;
@@ -587,7 +590,7 @@ int main(){
 				} else if (aluno.capituloAtual == 3) {
 					capitulo3(&aluno);
 				} else {
-					printf("Capítulo salvo não reconhecido.\n");
+					printf("Capítulo salvo nao reconhecido.\n");
 				}
 
 				jogoCriado = 1;
