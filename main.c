@@ -155,7 +155,6 @@ void batalha(Personagem *p, Marcel m, const char* nome_monstro) {
 	while (p->vida > 0 && m.vida > 0) {
 		int dado = rolarDado();
 		int ataque = p->QI + dado;
-		printf("%d", m.vida);
 		printf("Você rolou %d. Ataque total: %d\n", dado, ataque);
 		if (ataque > m.QI) {
 			printf("Você acertou! %s perdeu 2 de vida.\n", nome_monstro);
