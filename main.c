@@ -467,6 +467,7 @@ void capitulo3(Personagem *p) {
     wait(1000);
     printf("Voce: Aquele cara me chamou de aluno, mas ele tambem nao era aluno?\n");
     wait(1500);
+    limparTela();
 
     printf("\n* Chegando na sala *\n");
     wait(1000);
@@ -474,12 +475,14 @@ void capitulo3(Personagem *p) {
     wait(2000);
     printf("Posner: Ja aviso de antemao que ninguem nunca passou em minha disciplina. Boa sorte.\n");
     wait(2000);
-
+    limparTela();
+	
     printf("\n* Ao fim da primeira aula *\n");
     wait(1000);
     printf("Voce: Esse cara nao ta pra brincadeira. Tenho que estudar o dobro... nao, o triplo pra passar.\n");
     wait(1500);
-
+    limparTela();
+	
     printf("\n* Nos dias seguintes, andando pelos corredores... *\n");
     wait(1500);
     printf("Desconhecido: Ei, psiu!\n");
@@ -512,7 +515,8 @@ void capitulo3(Personagem *p) {
     } else {
         printf("Voce ignorou a dica de Bruno.\n");
     }
-
+    limparTela();
+	
     wait(1500);
     printf("\n* Proxima aula *\n");
     wait(1000);
@@ -546,7 +550,8 @@ void capitulo3(Personagem *p) {
     wait(2000);
     printf("Posner: Bruno? Nao existe nenhum Bruno.\n");
     wait(2000);
-
+    limparTela();
+	
     printf("\n* 1 ano depois... *\n");
     wait(1500);
     printf("Voce: Bom dia alunos, sou %s, e irei lecionar a materia de PE. Vamos comecar dizendo os nomes. Voce, por favor, seu nome?\n", p->nome);
