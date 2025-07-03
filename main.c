@@ -55,7 +55,10 @@ int rolarDado() {
 }
 
 void saves(Personagem *p){
-	FILE *f = fopen("jogo.sav", "wb");
+	char nomeArquivo[50];
+	strcpy(nomeArquivo, p->nome);
+	strcat(nomeArquivo, ".sav");
+	FILE *f = fopen(nomeArquivo, "wb");
 	if (f == NULL){
 		printf(RED "Erro ao salvar o jogo.\n" RESET);
 		return;
@@ -66,7 +69,11 @@ void saves(Personagem *p){
 }
 
 void carregarGame(Personagem *p){
-	FILE *f = fopen("jogo.sav", "rb");
+	char nomeArquivo[50];
+	printf("Qual o nome do personagem que deseja carregar? (Escreva exatamente o nome do personagem)\n: ");
+	scanf(" %[^\n]", nomeArquivo);
+	strcat(nomeArquivo, ".sav");
+	FILE *f = fopen(nomeArquivo, "rb");
 	if (f == NULL){
 		printf(RED "nenhum jogo salvo encontrado.\n" RESET);
 		return;
@@ -144,9 +151,11 @@ int minigame1() {
 
 void batalha(Personagem *p, Marcel m, const char* nome_monstro) {
 	printf("\n--- Batalha contra %s ---\n", nome_monstro);
+
 	while (p->vida > 0 && m.vida > 0) {
 		int dado = rolarDado();
 		int ataque = p->QI + dado;
+		printf("%d", m.vida);
 		printf("Você rolou %d. Ataque total: %d\n", dado, ataque);
 		if (ataque > m.QI) {
 			printf("Você acertou! %s perdeu 2 de vida.\n", nome_monstro);
@@ -252,34 +261,37 @@ void capitulo1(Personagem *p){
 			wait(1500);
 			printf("Personagem: \"Ufa, achei que não sobreviveria a essa lista... pelo amor de Deus, e ainda não entendi como funciona um diplexador... enfim, espero que a prova não esteja difícil.\"\n");
 	}
+	wait(1500);
 	limparTela();
 
 	pausa();
 	interagirComPosner(p);
 
 	int cont = 0;
-	atividadeExtra(p, &cont);
-	atividadeExtra(p, &cont);
+	atividades(p, &cont);
+	atividades(p, &cont);
 
 	printf("\n--- Próximo dia ---\n");
 	printf("\"* A PROVA DE CIRCUITOS CHEGOU *\"\n");
 	wait(1000);
 
-	if (p->exp >= 7) {
-		printf("Marcel: \"Somente lápis, borracha e caneta em cima da mesa. Vamos começar a prova.\"\n");
-		Marcel prova = {6, 9};
-		batalha(p, prova, "PROVA DE CIRCUITOS");
-	} else {
+	while (p->exp < 7) {
 		printf("Você não tem experiência suficiente. Vá para a biblioteca treinar.\n");
 		p->exp += 2;
 		printf("Você treinou e ganhou +1 de habilidade (agora: %d).\n", p->exp);
 	}
 
+	printf("Marcel: \"Somente lápis, borracha e caneta em cima da mesa. Vamos começar a prova.\"\n");
+	Marcel prova;
+	prova.QI = 6;
+	prova.vida = 9;
+	batalha(p, prova, "PROVA DE CIRCUITOS");
+
 	printf("\n--- Capítulo 1 concluído ---\n");
 	p->capituloAtual = 1;
 	saves(p);
 
-	limparTela();
+	limparTela(); 
 }
 
 void ProvaMD(Personagem *p) {
@@ -390,7 +402,7 @@ void capitulo2(Personagem *p){
 	printf("\n--- INICIANDO PROVA DE MD ---\n");
     wait(1000);
     
-	provaMD(p);
+	ProvaMD(p);
 
     printf(GREEN "\nVocê passou na prova de Matemática Discreta!\n" RESET); 
 
@@ -449,6 +461,7 @@ void ProvaPE(Personagem *p) {
         p->exp += 40;
     }
 }
+
 void capitulo3(Personagem *p) {
 	printf("\n1 mês depois...\n");
     wait(1000);
